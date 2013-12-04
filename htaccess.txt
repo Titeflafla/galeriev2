@@ -1,0 +1,11 @@
+<FilesMatch "\.(pl|cgi|py|php|php2|php3|php4|php5|js|phtml?|shtml?)$">
+deny from all
+</FilesMatch>
+
+# Ces directives indiquent à Apache qu'il ne doit plus interpréter le PHP dans ce dossier
+RemoveHandler .php .php1 .php2 .php3 .php4 .php5 .html .htm .phtml .shtml .pl .cgi .js .c .exe
+RemoveType .php .php1 .php2 .php3 .php4 .php5 .html .htm .phtml .shtml .pl .cgi .js .c .exe
+php_flag engine off
+
+# Aucun script dans le dossier et ses sous-dossiers, que ce soit PHP, PERL ou autre CGI, ne pourra s'executer si ExecCGI est inactif. Et interdit d'afficher la liste des fichiers.
+OPTIONS -ExecCGI -Indexes
