@@ -8,9 +8,9 @@ pour installer ce module :
 -Lancer install.php en entrant l'adresse suivante dans votre navigateur : http://votre-site/install.php
 -suivez les indications
 
-Si jamais vous avez un soucis : http://www.titeflafla.net
+Si jamais vous avez un soucis : http://www.chezyann.net
 
-Démo disponible sur http://nk.titeflafla.net
+Démo disponible sur http://nk.chezyann.net
 
 -> le fichier index.php du module Comment est inclus car il faut rajouter ce bout de code pour autoriser les commentaires :
      
