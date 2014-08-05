@@ -658,37 +658,53 @@ if ($visiteur >= $level_access && $level_access > -1) {
 		}
 
 		list($width, $height, $type) = getimagesize($img);
-                switch ($t) {
-                	case 'pc': // les petites minatures avec cadre
-                	$new_width = 235;
-			$new_height = 175;
-			$sufix = 'mini_cadre_';
-			break;
-			case 'p': // les petites minatures sans cadre
-                	$new_width = 235;
-			$new_height = 175;
-			$sufix = 'mini_';
-			break;
-	                case 'g': // les grosses minatures sans cadre                	$new_width = 549;
-			$new_height = 314;
-			$sufix = 'big_';
-			break;
-			case 'gc': // les grosses minatures avec cadre
-                	$new_width = 549;
-			$new_height = 314;
-			$sufix = 'big_cadre_';
-			break;
-			case 'b': // les minatures du block
-                	$new_width = 200;
-			$new_height = 170;
-			$sufix = 'block_';
-			break;
-			default: // par default on fabrique une mini sans cadre
-            		$new_width = 235;
-			$new_height = 175;
-			$sufix = 'mini_';
-            		break;
-                }
+        switch ($t) {
+            case 'pc': // les petites minatures avec cadre
+            // Si l'images est plus large que haute ou carré
+            if ($width > $height) {
+                $new_width = 235;
+                $new_height = 175;
+            } elseif ($width == $height) {
+                $new_width = 175;
+                $new_height = 175;
+            } else {                $new_width = 125;
+                $new_height = 175;            }
+            $sufix = 'mini_cadre_';
+            break;
+            case 'p': // les petites minatures sans cadre
+            $new_width = 235;
+            $new_height = 175;
+            $sufix = 'mini_';
+            break;
+            case 'g': // les grosses minatures sans cadre            $new_width = 549;
+            $new_height = 314;
+            $sufix = 'big_';
+            break;
+            case 'gc': // les grosses minatures avec cadre
+            // Si l'images est plus large que haute ou carré
+            if ($width > $height) {
+                $new_width = 549;
+                $new_height = 314;
+            } elseif ($width == $height) {
+                $new_width = 314;
+                $new_height = 314;
+            } else {
+                $new_width = 289;
+                $new_height = 314;
+            }
+            $sufix = 'big_cadre_';
+            break;
+            case 'b': // les minatures du block
+            $new_width = 200;
+            $new_height = 170;
+            $sufix = 'block_';
+            break;
+            default: // par default on fabrique une mini sans cadre
+            $new_width = 235;
+            $new_height = 175;
+            $sufix = 'mini_';
+            break;
+		}
 
 		if ($type == 1) $type_img = imagecreatefromgif($img);
 		elseif($type == 2) $type_img = imagecreatefromjpeg($img);
@@ -703,8 +719,13 @@ if ($visiteur >= $level_access && $level_access > -1) {
 		imagedestroy($image_p);
 
 		if($a_c == '1') {  // on ajoute le cadre
-			if($t == 'pc') $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_gal_mini.png');
-			else $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_600.png');
+			if($t == 'pc') {				if ($width > $height) $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_gal_mini.png');
+				elseif ($width == $height) $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_gal_mini_carre.png');
+				else $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_gal_mini_141.png');
+			} else {				if ($width > $height) $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_600.png');
+				elseif ($width == $height) $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_carre.png');
+				else $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_338.png');
+			}
 			$insert = imagecreatefrompng($gallery_pref['rep_img'] .'temp/'. $sufix . $img_tmp .'.png');
 
 			imagecolortransparent($insert,imagecolorexact($insert,255,0,255));
