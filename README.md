@@ -39,3 +39,6 @@ Vous pouvez mettre le fichier .htaccess dans votre dossier upload/Gallery_v2 pou
 
 -> Si les vidéos ne s'affiche pas dans le lecteur rajouter cette ligne dans le .htaccess à la racinde de votre site : 
 SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|zip|gz|swf|flv|mp3|avi|mp4|mov|f4v)$ no-gzip dont-vary
+
+Update :
+05/08/2014 : modification de la génération des miniatures pour prendre en compte les images de type portrait, paysage ou carré
