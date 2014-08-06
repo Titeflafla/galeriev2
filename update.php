@@ -68,19 +68,19 @@ function index() {
     	if ($last == '1.7.9' || $version == 'SP4.6 Beta') {
 
 		echo '<div class="content-box" style="width:700px!important;margin:auto;">',"\n" //<!-- Start Content Box -->
-        	. '<div class="content-box-header"><h3>Mise à jour du Module Galerie V2</h3></div>',"\n"
+        	. '<div class="content-box-header"><h3>Mise Ã  jour du Module Galerie V2</h3></div>',"\n"
         	. '<div class="tab-content" id="tab2"><table style="margin:auto;width:80%;color:black;" cellspacing="0" cellpadding="0" border="0">';
 
-		// Vérification si le module est installé
+		// VÃ©rification si le module est installÃ©
 		$test = mysql_query("SELECT id FROM ". $nuked['prefix'] ."_modules WHERE nom='Gallery_v2'");
 		$req = mysql_num_rows($test);
-		if($req == 0) echo '<tr><td style="text-align:center;"><span style="color:red; font-weight:bold;">Attention le module Galery V2 n\'est pas installé vous devez d\'abord l\'installer.</span></td></tr>';
+		if($req == 0) echo '<tr><td style="text-align:center;"><span style="color:red; font-weight:bold;">Attention le module Galery V2 n\'est pas installÃ© vous devez d\'abord l\'installer.</span></td></tr>';
 
 		echo '<tr>
 		<td>
-		Vous allez mettre à jour le module <strong>Galerie V2</strong> <br /><br />
-		Créé par <a href="http://www.chezyann.net" target="_blank">Kipcool</a> Pour <a href="http://www.nuked-klan.eu" target="_blank">Nuked-Klan</a><br /><br />
-		Merci à <a href="http://kotshiro.free.fr" target="_blank">inconnue_team</a> pour la fonction recherche, les bugs corigés et les suggestions ^^ et naru01 pour la maj portrait, paysage et miniature et tout les autres ;)
+		Vous allez mettre Ã  jour le module <strong>Galerie V2</strong> <br /><br />
+		CrÃ©Ã© par <a href="http://www.chezyann.net" target="_blank">Kipcool</a> Pour <a href="http://www.nuked-klan.eu" target="_blank">Nuked-Klan</a><br /><br />
+		Merci Ã  <a href="http://kotshiro.free.fr" target="_blank">inconnue_team</a> pour la fonction recherche, les bugs corigÃ©s et les suggestions ^^ et naru01 pour la maj portrait, paysage et miniature et tout les autres ;)
 		</td>
 		</tr>
 		<tr>
@@ -108,11 +108,11 @@ function update() {
 
         top();
         echo '<div class="tab-content" id="tab2" style="width:700px!important;margin:auto;">'
-        . "<br /><br /><div class=\"notification success png_bg\"><div>Le module Galerie V2 a été mise à jour correctement.<br />
+        . "<br /><br /><div class=\"notification success png_bg\"><div>Le module Galerie V2 a Ã©tÃ© mise Ã  jour correctement.<br />
         Redirection en cours vers l'administration ...</div></div>";
 
 	//Supression automatique du fichier install.php
-	if(@!unlink("update.php")) echo "<br /><br /><div class=\"notification error png_bg\"><div>Penser à supprimer le fichier update.php de votre FTP .</div></div>";
+	if(@!unlink("update.php")) echo "<br /><br /><div class=\"notification error png_bg\"><div>Penser Ã  supprimer le fichier update.php de votre FTP .</div></div>";
 
         echo '</div></body></html>';
 	redirect("index.php?file=Admin", 2);
@@ -122,9 +122,9 @@ function nan() {
 
 	top();
         echo '<div class="tab-content" id="tab2" style="width:700px!important;margin:auto;">'
-	. "<br /><br /><div class=\"notification error png_bg\"><div>Installation annulé .</div></div>";
+	. "<br /><br /><div class=\"notification error png_bg\"><div>Installation annulÃ© .</div></div>";
 
-	if(@!unlink("install.php")) echo "<br /><br /><div class=\"notification error png_bg\"><div>Penser à supprimer le fichier update.php de votre FTP .</div></div>";
+	if(@!unlink("update.php")) echo "<br /><br /><div class=\"notification error png_bg\"><div>Penser Ã  supprimer le fichier update.php de votre FTP .</div></div>";
 
         echo '</div></body></html>';
 
