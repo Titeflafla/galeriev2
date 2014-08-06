@@ -673,101 +673,104 @@ if ($visiteur >= $level_admin && $level_admin > -1) {
 
     	function main_pref() {
 
-	        global $nuked, $language, $gallery_pref;
+            global $nuked, $language, $gallery_pref;
 
-                echo '<link rel="stylesheet" media="screen" type="text/css" href="media/colorpicker/css/colorpicker.css" />'
-		. '<script type="text/javascript" src="media/colorpicker/js/colorpicker.js"></script>'
-	        . "<div class=\"content-box\">\n"
-	        . "<div class=\"content-box-header\"><h3>" . _ADMINGALLERY . "</h3>\n"
-	        . "<div style=\"text-align:right;\"><a href=\"help/" . $language . "/Gallery_v2.php\" rel=\"modal\">\n"
-	        . "<img style=\"border: 0;\" src=\"help/help.gif\" alt=\"\" title=\"" . _HELP . "\" /></a>\n"
-	        . "</div></div>\n"
-	        . "<div class=\"tab-content\" id=\"tab2\"><div style=\"text-align: center;\"><b><a href=\"index.php?file=Gallery_v2&amp;page=admin\">" . _GALLERY . "</a> | "
-	        . "<a href=\"index.php?file=Gallery_v2&amp;page=admin&amp;op=add_screen\">" . _ADDSCREEN . "</a> | "
-	        . "<a href=\"index.php?file=Gallery_v2&amp;page=admin&amp;op=main_cat\">" . _CATMANAGEMENT . "</a> | "
-	        . "</b>" . _PREFS . "</div><br />\n"
-	        . "<form method=\"post\" action=\"index.php?file=Gallery_v2&amp;page=admin&amp;op=change_pref\">\n"
-	        . "<table style=\"margin-left: auto;margin-right: auto;text-align: left;\" border=\"0\" cellspacing=\"0\" cellpadding=\"3\">\n"
-	        . "<tr><td align=\"center\" colspan=\"2\"><big>" . _PREFS . "</big></td></tr>\n"
-	        . "<tr><td>" . _GALLERYTITLE . " : </td><td> <input type=\"text\" name=\"title\" size=\"40\" value=\"" . $gallery_pref['title']. "\" /></td></tr>\n"
-	        . "<tr><td>" . _NUMBERCAT . " : </td><td><input type=\"text\" name=\"max_cat\" size=\"2\" value=\"" . $gallery_pref['max_cat'] . "\" /></td></tr>\n"
-	        . "<tr><td>" . _NUMBERIMG . " : </td><td><input type=\"text\" name=\"mess_guest_page\" size=\"2\" value=\"" . $gallery_pref['mess_guest_page'] . "\" /></td></tr>\n"
-	        . "<tr><td>" . _NUMBERIMGADMIN . " : </td><td><input type=\"text\" name=\"mess_admin_page\" size=\"2\" value=\"" . $gallery_pref['mess_admin_page'] . "\" /></td></tr>\n"
-	        . "<tr><td>" . _COLORPLAYER . " : </td><td><input type=\"text\" id=\"couleur\" name=\"color_player\" value=\"". $gallery_pref['color_player'] ."\" /></td></tr>\n"
-	        . "<tr><td>" . _MEDIAPREVNEXT . " :</td><td><select class=\"styled\" size=\"1\" name=\"aff_prev_next\">"
-                . "<option value=\"on\""; if($gallery_pref['aff_prev_next'] == 'on') { echo "selected=\"selected\""; } echo ">Oui</option>"
-                . "<option value=\"off\""; if($gallery_pref['aff_prev_next'] == 'off') { echo "selected=\"selected\""; } echo ">Non</option></td></tr>"
-	        . "<tr><td>" . _GALLERYREP . " : </td><td> <input type=\"text\" name=\"rep_img\" size=\"30\" value=\"" . $gallery_pref['rep_img'] . "\" /></td></tr>\n"
+            echo '<link rel="stylesheet" media="screen" type="text/css" href="media/colorpicker/css/colorpicker.css" />'
+            . '<script type="text/javascript" src="media/colorpicker/js/colorpicker.js"></script>'
+            . "<div class=\"content-box\">\n"
+            . "<div class=\"content-box-header\"><h3>" . _ADMINGALLERY . "</h3>\n"
+            . "<div style=\"text-align:right;\"><a href=\"help/" . $language . "/Gallery_v2.php\" rel=\"modal\">\n"
+            . "<img style=\"border: 0;\" src=\"help/help.gif\" alt=\"\" title=\"" . _HELP . "\" /></a>\n"
+            . "</div></div>\n"
+            . "<div class=\"tab-content\" id=\"tab2\"><div style=\"text-align: center;\"><b><a href=\"index.php?file=Gallery_v2&amp;page=admin\">" . _GALLERY . "</a> | "
+            . "<a href=\"index.php?file=Gallery_v2&amp;page=admin&amp;op=add_screen\">" . _ADDSCREEN . "</a> | "
+            . "<a href=\"index.php?file=Gallery_v2&amp;page=admin&amp;op=main_cat\">" . _CATMANAGEMENT . "</a> | "
+            . "</b>" . _PREFS . "</div><br />\n"
+            . "<form method=\"post\" action=\"index.php?file=Gallery_v2&amp;page=admin&amp;op=change_pref\">\n"
+            . "<table style=\"margin-left: auto;margin-right: auto;text-align: left;\" border=\"0\" cellspacing=\"0\" cellpadding=\"3\">\n"
+            . "<tr><td align=\"center\" colspan=\"2\"><big>" . _PREFS . "</big></td></tr>\n"
+            . "<tr><td>" . _GALLERYTITLE . " : </td><td> <input type=\"text\" name=\"title\" size=\"40\" value=\"" . $gallery_pref['title']. "\" /></td></tr>\n"
+            . "<tr><td>" . _NUMBERCAT . " : </td><td><input type=\"text\" name=\"max_cat\" size=\"2\" value=\"" . $gallery_pref['max_cat'] . "\" /></td></tr>\n"
+            . "<tr><td>" . _NUMBERIMG . " : </td><td><input type=\"text\" name=\"mess_guest_page\" size=\"2\" value=\"" . $gallery_pref['mess_guest_page'] . "\" /></td></tr>\n"
+            . "<tr><td>" . _NUMBERIMGADMIN . " : </td><td><input type=\"text\" name=\"mess_admin_page\" size=\"2\" value=\"" . $gallery_pref['mess_admin_page'] . "\" /></td></tr>\n"
+            . "<tr><td>" . _COLORPLAYER . " : </td><td><input type=\"text\" id=\"couleur\" name=\"color_player\" value=\"". $gallery_pref['color_player'] ."\" /></td></tr>\n"
+            . "<tr><td>" . _MEDIAPREVNEXT . " :</td><td><select class=\"styled\" size=\"1\" name=\"aff_prev_next\">"
+            . "<option value=\"on\""; if($gallery_pref['aff_prev_next'] == 'on') { echo "selected=\"selected\""; } echo ">Oui</option>"
+            . "<option value=\"off\""; if($gallery_pref['aff_prev_next'] == 'off') { echo "selected=\"selected\""; } echo ">Non</option></td></tr>"
+            . "<tr><td>" . _GALLERYREP . " : </td><td> <input type=\"text\" name=\"rep_img\" size=\"30\" value=\"" . $gallery_pref['rep_img'] . "\" /></td></tr>\n"
 
-	        . "<tr><td>" . _DLOK . " :</td><td><select size=\"1\" name=\"dl_ok\"><option value=\"on\""; if($gallery_pref['dl_ok'] == 'on') { echo "selected=\"selected\""; } echo ">Oui</option><option value=\"off\""; if($gallery_pref['dl_ok'] == 'off') { echo "selected=\"selected\""; } echo ">Non</option></select></td></tr>"
-                . "<tr><td>" . _DLLVL . " :</td><td><select size=\"1\" name=\"dl_lvl\">"
-                . "<option value=\"0\""; if($gallery_pref['dl_lvl'] == '0') { echo "selected=\"selected\""; } echo ">0</option>"
-                . "<option value=\"1\""; if($gallery_pref['dl_lvl'] == '1') { echo "selected=\"selected\""; } echo ">1</option>"
-                . "<option value=\"2\""; if($gallery_pref['dl_lvl'] == '2') { echo "selected=\"selected\""; } echo ">2</option>"
-                . "<option value=\"3\""; if($gallery_pref['dl_lvl'] == '3') { echo "selected=\"selected\""; } echo ">3</option>"
-                . "<option value=\"4\""; if($gallery_pref['dl_lvl'] == '4') { echo "selected=\"selected\""; } echo ">4</option>"
-                . "<option value=\"5\""; if($gallery_pref['dl_lvl'] == '5') { echo "selected=\"selected\""; } echo ">5</option>"
-                . "<option value=\"6\""; if($gallery_pref['dl_lvl'] == '6') { echo "selected=\"selected\""; } echo ">6</option>"
-                . "<option value=\"7\""; if($gallery_pref['dl_lvl'] == '7') { echo "selected=\"selected\""; } echo ">7</option>"
-                . "<option value=\"8\""; if($gallery_pref['dl_lvl'] == '8') { echo "selected=\"selected\""; } echo ">8</option>"
-                . "<option value=\"9\""; if($gallery_pref['dl_lvl'] == '9') { echo "selected=\"selected\""; } echo ">9</option></select></td></tr>"
-                . "<tr><td>". _ACTIVE_SUGGEST ." :</td><td><select size=\"1\" name=\"suggest\">"
-                . "<option value=\"1\""; if($gallery_pref['suggest'] == '1') { echo "selected=\"selected\""; } echo ">Oui</option>"
-                . "<option value=\"0\""; if($gallery_pref['suggest'] == '0') { echo "selected=\"selected\""; } echo ">Non</option></td></tr>"
-                . "<tr><td>". _LVL_SUGGEST ." :</td><td><select size=\"1\" name=\"lvl_suggest\">"
-                . "<option value=\"0\""; if($gallery_pref['lvl_suggest'] == '0') { echo "selected=\"selected\""; } echo ">0</option>"
-                . "<option value=\"1\""; if($gallery_pref['lvl_suggest'] == '1') { echo "selected=\"selected\""; } echo ">1</option>"
-                . "<option value=\"2\""; if($gallery_pref['lvl_suggest'] == '2') { echo "selected=\"selected\""; } echo ">2</option>"
-                . "<option value=\"3\""; if($gallery_pref['lvl_suggest'] == '3') { echo "selected=\"selected\""; } echo ">3</option>"
-                . "<option value=\"4\""; if($gallery_pref['lvl_suggest'] == '4') { echo "selected=\"selected\""; } echo ">4</option>"
-                . "<option value=\"5\""; if($gallery_pref['lvl_suggest'] == '5') { echo "selected=\"selected\""; } echo ">5</option>"
-                . "<option value=\"6\""; if($gallery_pref['lvl_suggest'] == '6') { echo "selected=\"selected\""; } echo ">6</option>"
-                . "<option value=\"7\""; if($gallery_pref['lvl_suggest'] == '7') { echo "selected=\"selected\""; } echo ">7</option>"
-                . "<option value=\"8\""; if($gallery_pref['lvl_suggest'] == '8') { echo "selected=\"selected\""; } echo ">8</option>"
-                . "<option value=\"9\""; if($gallery_pref['lvl_suggest'] == '9') { echo "selected=\"selected\""; } echo ">9</option></select></td></tr>"
-                . "<tr><td>". _SIZE_MAX_MO ." : </td><td><input type=\"text\" id=\"max_size\" name=\"max_size\" class=\"login_input_petit\" value=\"" . $gallery_pref['max_size'] . "\" /></td></tr>"
-                . "<tr><td>". _DL_ZIP ." :</td><td><select size=\"1\" name=\"dl_zip\">"
-                . "<option value=\"1\""; if($gallery_pref['dl_zip'] == '1') { echo "selected=\"selected\""; } echo ">Oui</option>"
-                . "<option value=\"0\""; if($gallery_pref['dl_zip'] == '0') { echo "selected=\"selected\""; } echo ">Non</option></td></tr>"
-	        . "<tr><td>". _LVL_ZIP ." :</td><td><select size=\"1\" name=\"lvl_dl_zip\">"
-                . "<option value=\"0\""; if($gallery_pref['lvl_dl_zip'] == '0') { echo "selected=\"selected\""; } echo ">0</option>"
-                . "<option value=\"1\""; if($gallery_pref['lvl_dl_zip'] == '1') { echo "selected=\"selected\""; } echo ">1</option>"
-                . "<option value=\"2\""; if($gallery_pref['lvl_dl_zip'] == '2') { echo "selected=\"selected\""; } echo ">2</option>"
-                . "<option value=\"3\""; if($gallery_pref['lvl_dl_zip'] == '3') { echo "selected=\"selected\""; } echo ">3</option>"
-                . "<option value=\"4\""; if($gallery_pref['lvl_dl_zip'] == '4') { echo "selected=\"selected\""; } echo ">4</option>"
-                . "<option value=\"5\""; if($gallery_pref['lvl_dl_zip'] == '5') { echo "selected=\"selected\""; } echo ">5</option>"
-                . "<option value=\"6\""; if($gallery_pref['lvl_dl_zip'] == '6') { echo "selected=\"selected\""; } echo ">6</option>"
-                . "<option value=\"7\""; if($gallery_pref['lvl_dl_zip'] == '7') { echo "selected=\"selected\""; } echo ">7</option>"
-                . "<option value=\"8\""; if($gallery_pref['lvl_dl_zip'] == '8') { echo "selected=\"selected\""; } echo ">8</option>"
-                . "<option value=\"9\""; if($gallery_pref['lvl_dl_zip'] == '9') { echo "selected=\"selected\""; } echo ">9</option></select></td></tr>"
-                . "<tr><td>". _THUMB_CADRE ." :</td><td><select size=\"1\" name=\"make_thumb\">"
-                . "<option value=\"1\""; if($gallery_pref['make_thumb'] == '1') { echo "selected=\"selected\""; } echo ">Avec cadre</option>"
-                . "<option value=\"0\""; if($gallery_pref['make_thumb'] == '0') { echo "selected=\"selected\""; } echo ">Sans cadre</option></td></tr>"
-                . "<tr><td>". _AFF_BLOCK ." :</td><td><select size=\"1\" name=\"block_type\">"
-                . "<option value=\"1\""; if($gallery_pref['block_type'] == '1') { echo "selected=\"selected\""; } echo ">Le dernier média</option>"
-                . "<option value=\"0\""; if($gallery_pref['block_type'] == '0') { echo "selected=\"selected\""; } echo ">Un média aléatoire</option></td></tr>"
+            . "<tr><td>" . _DLOK . " :</td><td><select size=\"1\" name=\"dl_ok\"><option value=\"on\""; if($gallery_pref['dl_ok'] == 'on') { echo "selected=\"selected\""; } echo ">Oui</option><option value=\"off\""; if($gallery_pref['dl_ok'] == 'off') { echo "selected=\"selected\""; } echo ">Non</option></select></td></tr>"
+            . "<tr><td>" . _DLLVL . " :</td><td><select size=\"1\" name=\"dl_lvl\">"
+            . "<option value=\"0\""; if($gallery_pref['dl_lvl'] == '0') { echo "selected=\"selected\""; } echo ">0</option>"
+            . "<option value=\"1\""; if($gallery_pref['dl_lvl'] == '1') { echo "selected=\"selected\""; } echo ">1</option>"
+            . "<option value=\"2\""; if($gallery_pref['dl_lvl'] == '2') { echo "selected=\"selected\""; } echo ">2</option>"
+            . "<option value=\"3\""; if($gallery_pref['dl_lvl'] == '3') { echo "selected=\"selected\""; } echo ">3</option>"
+            . "<option value=\"4\""; if($gallery_pref['dl_lvl'] == '4') { echo "selected=\"selected\""; } echo ">4</option>"
+            . "<option value=\"5\""; if($gallery_pref['dl_lvl'] == '5') { echo "selected=\"selected\""; } echo ">5</option>"
+            . "<option value=\"6\""; if($gallery_pref['dl_lvl'] == '6') { echo "selected=\"selected\""; } echo ">6</option>"
+            . "<option value=\"7\""; if($gallery_pref['dl_lvl'] == '7') { echo "selected=\"selected\""; } echo ">7</option>"
+            . "<option value=\"8\""; if($gallery_pref['dl_lvl'] == '8') { echo "selected=\"selected\""; } echo ">8</option>"
+            . "<option value=\"9\""; if($gallery_pref['dl_lvl'] == '9') { echo "selected=\"selected\""; } echo ">9</option></select></td></tr>"
+            . "<tr><td>". _ACTIVE_SUGGEST ." :</td><td><select size=\"1\" name=\"suggest\">"
+            . "<option value=\"1\""; if($gallery_pref['suggest'] == '1') { echo "selected=\"selected\""; } echo ">Oui</option>"
+            . "<option value=\"0\""; if($gallery_pref['suggest'] == '0') { echo "selected=\"selected\""; } echo ">Non</option></td></tr>"
+            . "<tr><td>". _LVL_SUGGEST ." :</td><td><select size=\"1\" name=\"lvl_suggest\">"
+            . "<option value=\"0\""; if($gallery_pref['lvl_suggest'] == '0') { echo "selected=\"selected\""; } echo ">0</option>"
+            . "<option value=\"1\""; if($gallery_pref['lvl_suggest'] == '1') { echo "selected=\"selected\""; } echo ">1</option>"
+            . "<option value=\"2\""; if($gallery_pref['lvl_suggest'] == '2') { echo "selected=\"selected\""; } echo ">2</option>"
+            . "<option value=\"3\""; if($gallery_pref['lvl_suggest'] == '3') { echo "selected=\"selected\""; } echo ">3</option>"
+            . "<option value=\"4\""; if($gallery_pref['lvl_suggest'] == '4') { echo "selected=\"selected\""; } echo ">4</option>"
+            . "<option value=\"5\""; if($gallery_pref['lvl_suggest'] == '5') { echo "selected=\"selected\""; } echo ">5</option>"
+            . "<option value=\"6\""; if($gallery_pref['lvl_suggest'] == '6') { echo "selected=\"selected\""; } echo ">6</option>"
+            . "<option value=\"7\""; if($gallery_pref['lvl_suggest'] == '7') { echo "selected=\"selected\""; } echo ">7</option>"
+            . "<option value=\"8\""; if($gallery_pref['lvl_suggest'] == '8') { echo "selected=\"selected\""; } echo ">8</option>"
+            . "<option value=\"9\""; if($gallery_pref['lvl_suggest'] == '9') { echo "selected=\"selected\""; } echo ">9</option></select></td></tr>"
+            . "<tr><td>". _SIZE_MAX_MO ." : </td><td><input type=\"text\" id=\"max_size\" name=\"max_size\" class=\"login_input_petit\" value=\"" . $gallery_pref['max_size'] . "\" /></td></tr>"
+            . "<tr><td>". _DL_ZIP ." :</td><td><select size=\"1\" name=\"dl_zip\">"
+            . "<option value=\"1\""; if($gallery_pref['dl_zip'] == '1') { echo "selected=\"selected\""; } echo ">Oui</option>"
+            . "<option value=\"0\""; if($gallery_pref['dl_zip'] == '0') { echo "selected=\"selected\""; } echo ">Non</option></td></tr>"
+        	. "<tr><td>". _LVL_ZIP ." :</td><td><select size=\"1\" name=\"lvl_dl_zip\">"
+            . "<option value=\"0\""; if($gallery_pref['lvl_dl_zip'] == '0') { echo "selected=\"selected\""; } echo ">0</option>"
+            . "<option value=\"1\""; if($gallery_pref['lvl_dl_zip'] == '1') { echo "selected=\"selected\""; } echo ">1</option>"
+            . "<option value=\"2\""; if($gallery_pref['lvl_dl_zip'] == '2') { echo "selected=\"selected\""; } echo ">2</option>"
+            . "<option value=\"3\""; if($gallery_pref['lvl_dl_zip'] == '3') { echo "selected=\"selected\""; } echo ">3</option>"
+            . "<option value=\"4\""; if($gallery_pref['lvl_dl_zip'] == '4') { echo "selected=\"selected\""; } echo ">4</option>"
+            . "<option value=\"5\""; if($gallery_pref['lvl_dl_zip'] == '5') { echo "selected=\"selected\""; } echo ">5</option>"
+            . "<option value=\"6\""; if($gallery_pref['lvl_dl_zip'] == '6') { echo "selected=\"selected\""; } echo ">6</option>"
+            . "<option value=\"7\""; if($gallery_pref['lvl_dl_zip'] == '7') { echo "selected=\"selected\""; } echo ">7</option>"
+            . "<option value=\"8\""; if($gallery_pref['lvl_dl_zip'] == '8') { echo "selected=\"selected\""; } echo ">8</option>"
+            . "<option value=\"9\""; if($gallery_pref['lvl_dl_zip'] == '9') { echo "selected=\"selected\""; } echo ">9</option></select></td></tr>"
+            . "<tr><td>". _THUMB_CADRE ." :</td><td><select size=\"1\" name=\"make_thumb\">"
+            . "<option value=\"1\""; if($gallery_pref['make_thumb'] == '1') { echo "selected=\"selected\""; } echo ">Avec cadre</option>"
+            . "<option value=\"0\""; if($gallery_pref['make_thumb'] == '0') { echo "selected=\"selected\""; } echo ">Sans cadre</option></td></tr>"
+            . "<tr><td>". _AFF_BLOCK ." :</td><td><select size=\"1\" name=\"block_type\">"
+            . "<option value=\"1\""; if($gallery_pref['block_type'] == '1') { echo "selected=\"selected\""; } echo ">Le dernier média</option>"
+            . "<option value=\"0\""; if($gallery_pref['block_type'] == '0') { echo "selected=\"selected\""; } echo ">Un média aléatoire</option></td></tr>"
+            . "<tr><td>". _NO_RESIZE ." :</td><td><select size=\"1\" name=\"no_resize\">"
+            . "<option value=\"1\""; if($gallery_pref['no_resize'] == '1') { echo "selected=\"selected\""; } echo ">Oui</option>"
+            . "<option value=\"0\""; if($gallery_pref['no_resize'] == '0') { echo "selected=\"selected\""; } echo ">Non</option></td></tr>"
 
-	        . "</table><div style=\"text-align: center;\"><br /><input type=\"submit\" value=\"" . _SEND . "\" /></div>\n"
-	        . "<div style=\"text-align: center;\"><br />[ <a href=\"index.php?file=Gallery_v2&amp;page=admin\"><b>" . _BACK . "</b></a> ]</div></form><br /></div></div>\n"
-	        . '<script type="text/javascript">
-            	//<![CDATA[
-            	$(\'#couleur\').ColorPicker({
-		onSubmit: function(hsb, hex, rgb, el) {$(el).val(hex);$(el).ColorPickerHide();},
-		onBeforeShow: function () {$(this).ColorPickerSetColor(this.value);}})
-		.bind(\'keyup\', function(){$(this).ColorPickerSetColor(this.value);});
-		//]]>
-		</script>';
+            . "</table><div style=\"text-align: center;\"><br /><input type=\"submit\" value=\"" . _SEND . "\" /></div>\n"
+            . "<div style=\"text-align: center;\"><br />[ <a href=\"index.php?file=Gallery_v2&amp;page=admin\"><b>" . _BACK . "</b></a> ]</div></form><br /></div></div>\n"
+            . '<script type="text/javascript">
+            //<![CDATA[
+            $(\'#couleur\').ColorPicker({
+            onSubmit: function(hsb, hex, rgb, el) {$(el).val(hex);$(el).ColorPickerHide();},
+            onBeforeShow: function () {$(this).ColorPickerSetColor(this.value);}})
+            .bind(\'keyup\', function(){$(this).ColorPickerSetColor(this.value);});
+            //]]>
+            </script>';
     	}
 
-    	function change_pref($title, $max_cat, $mess_guest_page, $mess_admin_page, $color_player, $aff_prev_next, $rep_img, $dl_ok, $dl_lvl, $max_size, $suggest, $lvl_suggest, $dl_zip, $lvl_dl_zip, $make_thumb, $block_type) {
+    	function change_pref($title, $max_cat, $mess_guest_page, $mess_admin_page, $color_player, $aff_prev_next, $rep_img, $dl_ok, $dl_lvl, $max_size, $suggest, $lvl_suggest, $dl_zip, $lvl_dl_zip, $make_thumb, $block_type, $no_resize) {
 
 	        global $nuked, $user, $gallery_pref;
 
-                if(!is_numeric($max_cat) || !is_numeric($mess_guest_page) || !is_numeric($mess_admin_page) || !is_numeric($max_size)) {
-                	echo "<div class=\"notification error png_bg\"><div>" . _NUMBERCAT . ", " . _NUMBERIMG . ", " . _NUMBERIMGADMIN . ", " . _SIZE_MAX_MO . " ". _NOT_NUMERIQUE ."</div></div>\n";
-                	redirect("index.php?file=Gallery_v2&page=admin", 2);
-                	exit();
-                }
+            if(!is_numeric($max_cat) || !is_numeric($mess_guest_page) || !is_numeric($mess_admin_page) || !is_numeric($max_size)) {
+            	echo "<div class=\"notification error png_bg\"><div>" . _NUMBERCAT . ", " . _NUMBERIMG . ", " . _NUMBERIMGADMIN . ", " . _SIZE_MAX_MO . " ". _NOT_NUMERIQUE ."</div></div>\n";
+            	redirect("index.php?file=Gallery_v2&page=admin", 2);
+            	exit();
+            }
 
 	        $upd1 = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". mysql_real_escape_string(stripslashes($title)) ."' WHERE name = 'title'");
 	        $upd2 = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $max_cat ."' WHERE name = 'max_cat'");
@@ -776,15 +779,16 @@ if ($visiteur >= $level_admin && $level_admin > -1) {
 	        $upd5 = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $color_player ."' WHERE name = 'color_player'");
 	        $upd6 = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $aff_prev_next ."' WHERE name = 'aff_prev_next'");
 	        $upd7 = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". mysql_real_escape_string(stripslashes($rep_img)) ."' WHERE name = 'rep_img'");
-                $upd8 = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $dl_ok ."' WHERE name = 'dl_ok'");
-                $upd9 = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $dl_lvl ."' WHERE name = 'dl_lvl'");
-                $upda = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $max_size ."' WHERE name = 'max_size'");
+         	$upd8 = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $dl_ok ."' WHERE name = 'dl_ok'");
+         	$upd9 = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $dl_lvl ."' WHERE name = 'dl_lvl'");
+         	$upda = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $max_size ."' WHERE name = 'max_size'");
 	        $updb = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $suggest ."' WHERE name = 'suggest'");
 	        $updc = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $lvl_suggest ."' WHERE name = 'lvl_suggest'");
 	        $updd = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $dl_zip ."' WHERE name = 'dl_zip'");
 	        $upde = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $lvl_dl_zip ."' WHERE name = 'lvl_dl_zip'");
 	        $updf = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $make_thumb ."' WHERE name = 'make_thumb'");
 	        $updg = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $block_type ."' WHERE name = 'block_type'");
+	        $updh = mysql_query("UPDATE ". GALLERY_V2_CONFIG_TABLE ." SET value = '". $no_resize ."' WHERE name = 'no_resize'");
 	        // Action
 	        $texteaction = _ACTIONPREFGAL;
 	        $acdate = time();
@@ -1019,7 +1023,7 @@ if ($visiteur >= $level_admin && $level_admin > -1) {
             	break;
 
         	case "change_pref":
-            	change_pref($_REQUEST['title'], $_REQUEST['max_cat'], $_REQUEST['mess_guest_page'], $_REQUEST['mess_admin_page'], $_REQUEST['color_player'], $_REQUEST['aff_prev_next'], $_REQUEST['rep_img'], $_REQUEST['dl_ok'], $_REQUEST['dl_lvl'], $_REQUEST['max_size'], $_REQUEST['suggest'], $_REQUEST['lvl_suggest'], $_REQUEST['dl_zip'], $_REQUEST['lvl_dl_zip'], $_REQUEST['make_thumb'], $_REQUEST['block_type']);
+            	change_pref($_REQUEST['title'], $_REQUEST['max_cat'], $_REQUEST['mess_guest_page'], $_REQUEST['mess_admin_page'], $_REQUEST['color_player'], $_REQUEST['aff_prev_next'], $_REQUEST['rep_img'], $_REQUEST['dl_ok'], $_REQUEST['dl_lvl'], $_REQUEST['max_size'], $_REQUEST['suggest'], $_REQUEST['lvl_suggest'], $_REQUEST['dl_zip'], $_REQUEST['lvl_dl_zip'], $_REQUEST['make_thumb'], $_REQUEST['block_type'], $_REQUEST['no_resize']);
             	break;
 
         	case "modif_position":

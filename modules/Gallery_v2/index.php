@@ -7,10 +7,13 @@
 // it under the terms of the GNU General Public License as published by     //
 // the Free Software Foundation; either version 2 of the License.           //
 // -------------------------------------------------------------------------//
-if (!defined("INDEX_CHECK")) die ("<div style=\"text-align: center;\">You cannot open this page directly</div>");
+if (!defined("INDEX_CHECK"))
+{
+	exit('You can\'t run this file alone.');
+}
 
 global $nuked, $language, $user;
-translate("modules/Gallery_v2/lang/" . $language . ".lang.php");
+translate("modules/Gallery_v2/lang/". $language .".lang.php");
 include("modules/Gallery_v2/config.php");
 
 $visiteur = !$user ? 0 : $user[1];
@@ -303,7 +306,9 @@ if ($visiteur >= $level_access && $level_access > -1) {
         	if ($count > 1 && $cat != "") {
             		echo "<table style=\"margin-left: auto;margin-right: auto;text-align: left;\" width=\"90%\"><tr>";
 
-            		if($gallery_pref['dl_zip'] == '1' && $visiteur >= $gallery_pref['lvl_dl_zip']) {            			echo "<td align=\"left\"><small><a href=\"javascript:void(0);\" onclick=\"javascript:window.open('index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_zip&amp;cid=" . $cat . "','dl','toolbar=0,location=0,directories=0,status=0,scrollbars=1,resizable=0,copyhistory=0,menuBar=0,width=650,height=300,top=30,left=0');return(false)\"><img style=\"border: 0;\" src=\"modules/Gallery_v2/images/make_zip.png\" alt=\"\" title=\"" . _DLTHISCAT . "\" /></a></small></td>";            		}
+            		if($gallery_pref['dl_zip'] == '1' && $visiteur >= $gallery_pref['lvl_dl_zip']) {
+            			echo "<td align=\"left\"><small><a href=\"javascript:void(0);\" onclick=\"javascript:window.open('index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_zip&amp;cid=" . $cat . "','dl','toolbar=0,location=0,directories=0,status=0,scrollbars=1,resizable=0,copyhistory=0,menuBar=0,width=650,height=300,top=30,left=0');return(false)\"><img style=\"border: 0;\" src=\"modules/Gallery_v2/images/make_zip.png\" alt=\"\" title=\"" . _DLTHISCAT . "\" /></a></small></td>";
+            		}
 
             		echo "<td align=\"right\">"
             		. '<div class="rightmenu"><div class="nav l_g"><ul>'
@@ -349,8 +354,12 @@ if ($visiteur >= $level_access && $level_access > -1) {
                                    			if (file_exists($gallery_pref['rep_img'] .'temp/mini_'. str_replace('.'. $ext, '', $url) .'.png')) $img_thumb = "<img src=\"". $gallery_pref['rep_img'] ."temp/mini_". str_replace('.'. $ext, '', $url) .".png\" alt=\"\" />";
                                    			else $img_thumb = '<img src="index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=m&amp;a_c=0&amp;image='. $url .'" alt="" />';
                                    		} else {
-                                   			if (file_exists($gallery_pref['rep_img'] .'temp/mini_cadre_'. str_replace('.'. $ext, '', $url) .'.png')) $img_thumb = "<img src=\"". $gallery_pref['rep_img'] ."temp/mini_cadre_". str_replace('.'. $ext, '', $url) .".png\" alt=\"\" />";
-                                   			else $img_thumb = '<img src="index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=pc&amp;a_c=1&amp;image='. $url .'" alt="" />';
+                                   			if($gallery_pref['no_resize'] == '1') {
+                                       			if (file_exists($gallery_pref['rep_img'] .'temp/mini_cadre_'. str_replace('.'. $ext, '', $url) .'.png')) $img_thumb = "<img src=\"". $gallery_pref['rep_img'] ."temp/mini_cadre_". str_replace('.'. $ext, '', $url) .".png\" alt=\"\" />";
+                                       			else $img_thumb = '<img src="index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=pc&amp;a_c=1&amp;image='. $url .'" alt="" />';
+                                   			} else {
+                                   			     $img_thumb = "<img src=\"". $gallery_pref['rep_img'] . $url ."\" alt=\"\" />";
+                                   			}
                                    		}
                                    	}
 
@@ -515,11 +524,15 @@ if ($visiteur >= $level_access && $level_access > -1) {
 	           	else {
 	            		$ext = pathinfo($url, PATHINFO_EXTENSION);
 	              		if($gallery_pref['make_thumb'] == '0') {
-	              		        if (file_exists($gallery_pref['rep_img'] .'temp/big_'. str_replace('.'. $ext, '', $url) .'.png')) $image = '<a href="'. $gallery_pref['rep_img'] . $url .'" rel="shadowbox" title="'. $titre .'"><img src="'. $gallery_pref['rep_img'] .'temp/big_'. str_replace('.'. $ext, '', $url) .'.png" alt="" /></a>';
+	              		    if (file_exists($gallery_pref['rep_img'] .'temp/big_'. str_replace('.'. $ext, '', $url) .'.png')) $image = '<a href="'. $gallery_pref['rep_img'] . $url .'" rel="shadowbox" title="'. $titre .'"><img src="'. $gallery_pref['rep_img'] .'temp/big_'. str_replace('.'. $ext, '', $url) .'.png" alt="" /></a>';
 	              			else $image = '<a href="'. $gallery_pref['rep_img'] . $url .'" rel="shadowbox" title="'. $titre .'"><img src="index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=g&amp;a_c=0&amp;image='. $url .'" alt="" /></a>';
 	              		} else {
-	              			if (file_exists($gallery_pref['rep_img'] .'temp/big_cadre_'. str_replace('.'. $ext, '', $url) .'.png')) $image = '<a href="'. $gallery_pref['rep_img'] . $url .'" rel="shadowbox" title="'. $titre .'"><img src="'. $gallery_pref['rep_img'] .'temp/big_cadre_'. str_replace('.'. $ext, '', $url) .'.png" alt="" /></a>';
-	              			else $image = '<a href="'. $gallery_pref['rep_img'] . $url .'" rel="shadowbox" title="'. $titre .'"><img src="index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=gc&amp;a_c=1&amp;image='. $url .'" alt="" /></a>';
+	              			if($gallery_pref['no_resize'] == '1') {
+    	              			if (file_exists($gallery_pref['rep_img'] .'temp/big_cadre_'. str_replace('.'. $ext, '', $url) .'.png')) $image = '<a href="'. $gallery_pref['rep_img'] . $url .'" rel="shadowbox" title="'. $titre .'"><img src="'. $gallery_pref['rep_img'] .'temp/big_cadre_'. str_replace('.'. $ext, '', $url) .'.png" alt="" /></a>';
+    	              			else $image = '<a href="'. $gallery_pref['rep_img'] . $url .'" rel="shadowbox" title="'. $titre .'"><img src="index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=gc&amp;a_c=1&amp;image='. $url .'" alt="" /></a>';
+	              			} else {
+                            	$image = "<img src=\"". $gallery_pref['rep_img'] . $url ."\" alt=\"\" />";
+                  			}
 	              		}
 	           	}
 
@@ -667,8 +680,10 @@ if ($visiteur >= $level_access && $level_access > -1) {
             } elseif ($width == $height) {
                 $new_width = 175;
                 $new_height = 175;
-            } else {                $new_width = 125;
-                $new_height = 175;            }
+            } else {
+                $new_width = 125;
+                $new_height = 175;
+            }
             $sufix = 'mini_cadre_';
             break;
             case 'p': // les petites minatures sans cadre
@@ -676,7 +691,8 @@ if ($visiteur >= $level_access && $level_access > -1) {
             $new_height = 175;
             $sufix = 'mini_';
             break;
-            case 'g': // les grosses minatures sans cadre            $new_width = 549;
+            case 'g': // les grosses minatures sans cadre
+            $new_width = 549;
             $new_height = 314;
             $sufix = 'big_';
             break;
@@ -719,10 +735,12 @@ if ($visiteur >= $level_access && $level_access > -1) {
 		imagedestroy($image_p);
 
 		if($a_c == '1') {  // on ajoute le cadre
-			if($t == 'pc') {				if ($width > $height) $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_gal_mini.png');
+			if($t == 'pc') {
+				if ($width > $height) $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_gal_mini.png');
 				elseif ($width == $height) $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_gal_mini_carre.png');
 				else $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_gal_mini_141.png');
-			} else {				if ($width > $height) $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_600.png');
+			} else {
+				if ($width > $height) $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_600.png');
 				elseif ($width == $height) $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_carre.png');
 				else $background = imagecreatefrompng('modules/Gallery_v2/images/cadre_338.png');
 			}

@@ -121,6 +121,7 @@ define("_GALLERYREP","Répertoire de la galerie");
 define("_MEDIANOFOUND","Ce m&eacute;dia n'existe pas !");
 define("_MEDIANOTACTIF","Ce m&eacute;dia est désactivé !");
 define("_CATERRORPOS","Vous ne pouvez pas modifier cette cat&eacute;gorie");
+define("_NO_RESIZE", "Redimensionner les images ?");
 
 define("_ACTIONADDGAL","a ajouté dans la galerie v2 l\'image :");
 define("_ACTIONDELGAL","a supprimé dans la galerie v2 l\'image :");

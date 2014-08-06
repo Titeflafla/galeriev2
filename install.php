@@ -18,7 +18,8 @@ else die('<br /><br /><div style=\"text-align: center;\"><b>install.php must be 
 if (is_file('nuked.php')) include('nuked.php');
 else die('<br /><br /><div style=\"text-align: center;\"><b>install.php must be near nuked.php</b></div>');
 
-function top() {
+function top() {
+
 	global $nuked;
 
 	echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -70,16 +71,16 @@ function index() {
         	. '<div class="content-box-header"><h3>Installation Module Galerie V2</h3></div>',"\n"
         	. '<div class="tab-content" id="tab2"><table style="margin:auto;width:80%;color:black;" cellspacing="0" cellpadding="0" border="0">';
 
-		//Vérification si INSTALLATION ou REINSTALLATION du module afin de ne pas dupliquer le liens dans l'admin
+		//VÃ©rification si INSTALLATION ou REINSTALLATION du module afin de ne pas dupliquer le liens dans l'admin
 		$test = mysql_query("SELECT id FROM " . $nuked['prefix'] . "_modules WHERE nom='Gallery_v2'");
 		$req = mysql_num_rows($test);
-		if($req == 1) echo '<tr><td style="text-align:center;"><span style="color:red; font-weight:bold;">Attention L\'installation remettra la configuration par défault du module.</span></td></tr>';
+		if($req == 1) echo '<tr><td style="text-align:center;"><span style="color:red; font-weight:bold;">Attention L\'installation remettra la configuration par dÃ©fault du module.</span></td></tr>';
 
 		echo '<tr>
 		<td>
 		Vous allez installer le module <strong>Galerie V2</strong> <br /><br />
-		Créé par <a href="http://www.titeflafla.net" target="_blank">Kipcool</a> Pour <a href="http://www.nuked-klan.eu" target="_blank">Nuked-Klan</a><br /><br />
-		Merci à <a href="http://kotshiro.free.fr" target="_blank">inconnue_team</a> pour la fonction recherche, les bugs corigés et les suggestions ^^
+		CrÃ©Ã© par <a href="http://www.titeflafla.net" target="_blank">Kipcool</a> Pour <a href="http://www.nuked-klan.eu" target="_blank">Nuked-Klan</a><br /><br />
+		Merci Ã  <a href="http://kotshiro.free.fr" target="_blank">inconnue_team</a> pour la fonction recherche, les bugs corigÃ©s et les suggestions ^^
 		</td>
 		</tr>
 		<tr>
@@ -165,6 +166,7 @@ function update() {
 	('dl_zip', '0'),
 	('lvl_dl_zip', '9'),
 	('make_thumb', '0'),
+	('no_resize', '1'),
 	('block_type', '1');");
         $req = mysql_query($sql_insert);
 
@@ -174,12 +176,12 @@ function update() {
 
         top();
         echo '<div class="tab-content" id="tab2" style="width:700px!important;margin:auto;">'
-        . "<br /><br /><div class=\"notification success png_bg\"><div>Le module Galerie V2 a été installé correctement.<br />
+        . "<br /><br /><div class=\"notification success png_bg\"><div>Le module Galerie V2 a Ã©tÃ© installÃ© correctement.<br />
         N'oublier pas d'ajouter le module dans le menu<br />
         Redirection en cours vers l'administration ...</div></div>";
 
 	//Supression automatique du fichier install.php
-	if(@!unlink("install.php")) echo "<br /><br /><div class=\"notification error png_bg\"><div>Penser à supprimer le fichier install.php de votre FTP .</div></div>";
+	if(@!unlink("install.php")) echo "<br /><br /><div class=\"notification error png_bg\"><div>Penser Ã  supprimer le fichier install.php de votre FTP .</div></div>";
 
         echo '</div></body></html>';
 	redirect("index.php?file=Admin", 2);
@@ -189,9 +191,9 @@ function nan() {
 
 	top();
         echo '<div class="tab-content" id="tab2" style="width:700px!important;margin:auto;">'
-	. "<br /><br /><div class=\"notification error png_bg\"><div>Installation annulé .</div></div>";
+	. "<br /><br /><div class=\"notification error png_bg\"><div>Installation annulÃ© .</div></div>";
 
-	if(@!unlink("install.php")) echo "<br /><br /><div class=\"notification error png_bg\"><div>Penser à supprimer le fichier install.php de votre FTP .</div></div>";
+	if(@!unlink("install.php")) echo "<br /><br /><div class=\"notification error png_bg\"><div>Penser Ã  supprimer le fichier install.php de votre FTP .</div></div>";
 
         echo '</div></body></html>';
 
