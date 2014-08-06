@@ -397,7 +397,7 @@ if ($visiteur >= $level_access && $level_access > -1) {
                                         echo '<td>'
                         		. "<table class=\"g2_cadre_table g2_gradient\" cellspacing=\"0\" cellpadding=\"0\">"
                         		. "<tr><td style=\"padding:10px;text-align:left;\">". $titre ."<div style=\"float:right;pading-right:10px;\"><img style=\"vertical-align:bottom;\" src=\"". $img ."\" alt=\"\" title=\"". _THISFILE ." ". $extension ."\" /></div></td></tr>"
-                        		. "<tr><td style=\"padding:10px;\">"
+                        		. "<tr><td style=\"padding:10px;\" class=\"galcat\">"
                         		. "<a href=\"index.php?file=Gallery_v2&amp;op=description&amp;sid=". $sid ."&amp;orderby=". $_REQUEST['orderby'] ."\">". $img_thumb ."</a><br />";
                         		echo aff_vote($sid);
                         		echo "</td>"
@@ -446,7 +446,7 @@ if ($visiteur >= $level_access && $level_access > -1) {
 	        	$sql = mysql_query("SELECT sid, cat, titre, description, autor, url, url_file, date, count, count_dl, taille, type, mot_cle, actif FROM ". GALLERY_V2_TABLE ." WHERE sid = '". $sid ."'");
 	        	list($sid, $cat, $titre, $description, $autor, $url, $url_file, $date, $count, $count_dl, $taille, $type, $mot_cle, $actif) = mysql_fetch_array($sql);
 
-	                // On affiche un message si le média n'existe pas
+	                // On affiche un message si le mÃ©dia n'existe pas
 	                if ($sid == '') {
 	                	echo "<br /><div class=\"g2_title\">". $title ."</div><br />"
 	                	. "<div class=\"g2_warn\">". _MEDIANOFOUND ."<br /><a href=\"javascript:history.back()\"><b>" . _BACK . "</b></a><br /><br /></div><br />";
@@ -454,7 +454,7 @@ if ($visiteur >= $level_access && $level_access > -1) {
 	                	footer();
 	                	exit;
 	                }
-	                // On affiche un message si le média est désactivé
+	                // On affiche un message si le mÃ©dia est dÃ©sactivÃ©
 	                if ($actif == '0') {
 	                	echo "<br /><div class=\"g2_title\">". $title ."</div><br />"
 	                	. "<div class=\"g2_warn\">". _MEDIANOTACTIF ."<br /><a href=\"javascript:history.back()\"><b>" . _BACK . "</b></a><br /><br /></div><br />";
@@ -689,7 +689,7 @@ if ($visiteur >= $level_access && $level_access > -1) {
 		list($width, $height, $type) = getimagesize($img);
         switch ($t) {
             case 'pc': // les petites minatures avec cadre
-            // Si l'images est plus large que haute ou carré
+            // Si l'images est plus large que haute ou carrÃ©
             if ($width > $height) {
                 $new_width = 235;
                 $new_height = 175;
@@ -713,7 +713,7 @@ if ($visiteur >= $level_access && $level_access > -1) {
             $sufix = 'big_';
             break;
             case 'gc': // les grosses minatures avec cadre
-            // Si l'images est plus large que haute ou carré
+            // Si l'images est plus large que haute ou carrÃ©
             if ($width > $height) {
                 $new_width = 549;
                 $new_height = 314;
@@ -786,9 +786,9 @@ if ($visiteur >= $level_access && $level_access > -1) {
                 $sql_c = mysql_query("SELECT url FROM ". GALLERY_V2_TABLE ." WHERE cat = '". $cid ."' AND type = ''");
         	$nb_media = mysql_num_rows($sql_c);
 
-        	if($nb_media == 0) die('Catégorie vide !');
+        	if($nb_media == 0) die('CatÃ©gorie vide !');
 
-                $n_zip = time() .'_catégorie_'. $cid .'.zip';
+                $n_zip = time() .'_catÃ©gorie_'. $cid .'.zip';
         	$zip = new ZipArchive();
         	if($zip->open($n_zip, ZipArchive::CREATE) === TRUE) {
         		while ($r_sql = mysql_fetch_array($sql_c, MYSQL_ASSOC)) {
@@ -967,7 +967,7 @@ if ($visiteur >= $level_access && $level_access > -1) {
 		$parse = '';
 		$parse2 = '';
 		$formated_url = '';
-		//On détermine où est hebergée la vidéo (youtube, dailymotion, vimeo) et on extrait les données nécessaires au formatage du lien
+		//On dÃ©termine oÃ¹ est hebergÃ©e la vidÃ©o (youtube, dailymotion, vimeo) et on extrait les donnÃ©es nÃ©cessaires au formatage du lien
 		$parse = parse_url($url);
 		switch ($parse['host']) {
 			case 'youtu.be':
@@ -990,7 +990,7 @@ if ($visiteur >= $level_access && $level_access > -1) {
 			default:
 			break;
 		}
-		//On formate le lien selon l'hébergeur
+		//On formate le lien selon l'hÃ©bergeur
 		switch ($host) {
 			case 'youtube':
 			$formated_url = $id;
