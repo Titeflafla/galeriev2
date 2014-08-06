@@ -341,18 +341,30 @@ if ($visiteur >= $level_access && $level_access > -1) {
 	                                if (($type == "flv" || $type == "youtube" || $type == "dailymotion" || $type == "vimeo") && $url_file != '') {
                                  		$ext = pathinfo($url_file, PATHINFO_EXTENSION);
                                  		if($gallery_pref['make_thumb'] == '0') {
-                                 			if (file_exists($gallery_pref['rep_img'] .'temp/mini_'. str_replace('.'. $ext, '', $url_file) .'.png')) $img_thumb = "<img src=\"". $gallery_pref['rep_img'] ."temp/mini_". str_replace('.'. $ext, '', $url_file) .".png\" alt=\"\" />";
-                                 			else $img_thumb = '<img src="index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=p&amp;a_c=0&amp;image='. $url_file .'" alt="" />';
+                                 		    if($gallery_pref['no_resize'] == '1') {
+                                 				if (file_exists($gallery_pref['rep_img'] .'temp/mini_'. str_replace('.'. $ext, '', $url_file) .'.png')) $img_thumb = "<img src=\"". $gallery_pref['rep_img'] ."temp/mini_". str_replace('.'. $ext, '', $url_file) .".png\" alt=\"\" />";
+                                 				else $img_thumb = '<img src="index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=p&amp;a_c=0&amp;image='. $url_file .'" alt="" />';
+                                 			} else {
+                            					$img_thumb = "<img src=\"". $gallery_pref['rep_img'] . $url_file ."\" alt=\"\" />";
+                  							}
                                  		} else {
-                                 			if (file_exists($gallery_pref['rep_img'] .'temp/mini_cadre_'. str_replace('.'. $ext, '', $url_file) .'.png')) $img_thumb = "<img src=\"". $gallery_pref['rep_img'] ."temp/mini_cadre_". str_replace('.'. $ext, '', $url_file) .".png\" alt=\"\" />";
-                                 			else $img_thumb = '<img src="index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=pc&amp;a_c=1&amp;image='. $url_file .'" alt="" />';
+                                 			if($gallery_pref['no_resize'] == '1') {
+                                 				if (file_exists($gallery_pref['rep_img'] .'temp/mini_cadre_'. str_replace('.'. $ext, '', $url_file) .'.png')) $img_thumb = "<img src=\"". $gallery_pref['rep_img'] ."temp/mini_cadre_". str_replace('.'. $ext, '', $url_file) .".png\" alt=\"\" />";
+                                 				else $img_thumb = '<img src="index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=pc&amp;a_c=1&amp;image='. $url_file .'" alt="" />';
+                                 			} else {
+                            					$img_thumb = "<img src=\"". $gallery_pref['rep_img'] . $url_file ."\" alt=\"\" />";
+                  							}
                                  		}
                                  	} elseif (($type == "flv" || $type == "youtube" || $type == "dailymotion" || $type == "vimeo") && $url_file == '') $img_thumb = '<img src="modules/Gallery_v2/images/video.png" alt="" />';
                                   	else {
                                    		$ext = pathinfo($url, PATHINFO_EXTENSION);
                                    		if($gallery_pref['make_thumb'] == '0') {
-                                   			if (file_exists($gallery_pref['rep_img'] .'temp/mini_'. str_replace('.'. $ext, '', $url) .'.png')) $img_thumb = "<img src=\"". $gallery_pref['rep_img'] ."temp/mini_". str_replace('.'. $ext, '', $url) .".png\" alt=\"\" />";
-                                   			else $img_thumb = '<img src="index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=m&amp;a_c=0&amp;image='. $url .'" alt="" />';
+                                   			if($gallery_pref['no_resize'] == '1') {
+                                   				if (file_exists($gallery_pref['rep_img'] .'temp/mini_'. str_replace('.'. $ext, '', $url) .'.png')) $img_thumb = "<img src=\"". $gallery_pref['rep_img'] ."temp/mini_". str_replace('.'. $ext, '', $url) .".png\" alt=\"\" />";
+                                   				else $img_thumb = '<img src="index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=m&amp;a_c=0&amp;image='. $url .'" alt="" />';
+                                   			} else {
+                                   			     $img_thumb = "<img src=\"". $gallery_pref['rep_img'] . $url ."\" alt=\"\" />";
+                                   			}
                                    		} else {
                                    			if($gallery_pref['no_resize'] == '1') {
                                        			if (file_exists($gallery_pref['rep_img'] .'temp/mini_cadre_'. str_replace('.'. $ext, '', $url) .'.png')) $img_thumb = "<img src=\"". $gallery_pref['rep_img'] ."temp/mini_cadre_". str_replace('.'. $ext, '', $url) .".png\" alt=\"\" />";
@@ -524,8 +536,12 @@ if ($visiteur >= $level_access && $level_access > -1) {
 	           	else {
 	            		$ext = pathinfo($url, PATHINFO_EXTENSION);
 	              		if($gallery_pref['make_thumb'] == '0') {
-	              		    if (file_exists($gallery_pref['rep_img'] .'temp/big_'. str_replace('.'. $ext, '', $url) .'.png')) $image = '<a href="'. $gallery_pref['rep_img'] . $url .'" rel="shadowbox" title="'. $titre .'"><img src="'. $gallery_pref['rep_img'] .'temp/big_'. str_replace('.'. $ext, '', $url) .'.png" alt="" /></a>';
-	              			else $image = '<a href="'. $gallery_pref['rep_img'] . $url .'" rel="shadowbox" title="'. $titre .'"><img src="index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=g&amp;a_c=0&amp;image='. $url .'" alt="" /></a>';
+	              		    if($gallery_pref['no_resize'] == '1') {
+	              		    	if (file_exists($gallery_pref['rep_img'] .'temp/big_'. str_replace('.'. $ext, '', $url) .'.png')) $image = '<a href="'. $gallery_pref['rep_img'] . $url .'" rel="shadowbox" title="'. $titre .'"><img src="'. $gallery_pref['rep_img'] .'temp/big_'. str_replace('.'. $ext, '', $url) .'.png" alt="" /></a>';
+	              				else $image = '<a href="'. $gallery_pref['rep_img'] . $url .'" rel="shadowbox" title="'. $titre .'"><img src="index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=g&amp;a_c=0&amp;image='. $url .'" alt="" /></a>';
+	              			} else {
+                            	$image = "<img src=\"". $gallery_pref['rep_img'] . $url ."\" alt=\"\" />";
+                  			}
 	              		} else {
 	              			if($gallery_pref['no_resize'] == '1') {
     	              			if (file_exists($gallery_pref['rep_img'] .'temp/big_cadre_'. str_replace('.'. $ext, '', $url) .'.png')) $image = '<a href="'. $gallery_pref['rep_img'] . $url .'" rel="shadowbox" title="'. $titre .'"><img src="'. $gallery_pref['rep_img'] .'temp/big_cadre_'. str_replace('.'. $ext, '', $url) .'.png" alt="" /></a>';
