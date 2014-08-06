@@ -14,7 +14,8 @@ Démo disponible sur http://nk.chezyann.net
 
 -> le fichier index.php du module Comment est inclus car il faut rajouter ce bout de code pour autoriser les commentaires :
      
-elseif($module == "Gallery_v2" || $module == "gallery_v2"):  // Modification Galerie V2
+elseif($module == "Gallery_v2" || $module == "gallery_v2"):  
+// Modification Galerie V2
 $WhereModule = 'gallery_v2';
 $sqlverif = "gallery_v2";
 $specification = "sid";
@@ -42,3 +43,4 @@ SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|zip|gz|swf|flv|mp3|avi|mp4|mov|f4v
 
 Update :
 05/08/2014 : modification de la génération des miniatures pour prendre en compte les images de type portrait, paysage ou carré
+06/08/2014 : ajout d'une option pour ne pas générer de miniature. Mise à jour via le fichier update.php
