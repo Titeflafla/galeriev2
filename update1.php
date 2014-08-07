@@ -85,8 +85,8 @@ function index() {
 		</tr>
 		<tr>
 		<td style="text-align:center;">
-		<input type="button" name="yes" onclick="document.location.href=\'update.php?op=update\';" value="MAJ" class="css3button"/>&nbsp;&nbsp;
-		<input type="button" name="No" onclick="document.location.href=\'update.php?op=nan\';" value="Annuler" class="css3button"/>
+		<input type="button" name="yes" onclick="document.location.href=\'update1.php?op=update\';" value="MAJ" class="css3button"/>&nbsp;&nbsp;
+		<input type="button" name="No" onclick="document.location.href=\'update1.php?op=nan\';" value="Annuler" class="css3button"/>
 		</td>
 		</tr>
 		</table>
@@ -102,8 +102,7 @@ function update() {
 
 	global $nuked;
 
-	$sql_insert = mysql_query("INSERT INTO `".$nuked['prefix']."_gallery_v2_config` (`name`, `value`) VALUES
-	('no_resize', '1');");
+	$sql_insert = mysql_query("ALTER TABLE `".$nuked['prefix']."_gallery_v2` CHANGE  `url`  `url` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT  '';");
  	$req = mysql_query($sql_insert);
 
         top();
@@ -112,7 +111,7 @@ function update() {
         Redirection en cours vers l'administration ...</div></div>";
 
 	//Supression automatique du fichier install.php
-	if(@!unlink("update.php")) echo "<br /><br /><div class=\"notification error png_bg\"><div>Penser à supprimer le fichier update.php de votre FTP .</div></div>";
+	if(@!unlink("update1.php")) echo "<br /><br /><div class=\"notification error png_bg\"><div>Penser à supprimer le fichier update1.php de votre FTP .</div></div>";
 
         echo '</div></body></html>';
 	redirect("index.php?file=Admin", 2);
@@ -124,7 +123,7 @@ function nan() {
         echo '<div class="tab-content" id="tab2" style="width:700px!important;margin:auto;">'
 	. "<br /><br /><div class=\"notification error png_bg\"><div>Installation annulé .</div></div>";
 
-	if(@!unlink("update.php")) echo "<br /><br /><div class=\"notification error png_bg\"><div>Penser à supprimer le fichier update.php de votre FTP .</div></div>";
+	if(@!unlink("update1.php")) echo "<br /><br /><div class=\"notification error png_bg\"><div>Penser à supprimer le fichier update1.php de votre FTP .</div></div>";
 
         echo '</div></body></html>';
 

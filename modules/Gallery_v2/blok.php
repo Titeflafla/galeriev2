@@ -31,23 +31,31 @@ if($visiteur == 9) {
 	list($id_galery) = mysql_fetch_array($sql_galery);
 }
 
+$url      = explode('|', $url);
 $aff_note = aff_vote($vid);
 
 if($url_file == '') $url_file = 'video.png';
 
 if (($type == "flv" || $type == "youtube" || $type == "dailymotion" || $type == "vimeo") && $url_file != '') {
 	$ext = pathinfo($url_file, PATHINFO_EXTENSION);
-	if(file_exists($gallery_pref['rep_img'] .'temp/block_'. str_replace('.'. $ext, '', $url_file) .'.png')) $img = $gallery_pref['rep_img'] .'temp/block_'. str_replace('.'. $ext, '', $url_file) .'.png';
-	else $img = 'index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=b&amp;a_c=0&amp;image='. $url_file;
-} elseif (($type == "flv" || $type == "youtube" || $type == "dailymotion" || $type == "vimeo") && $url_file == '') $img = '<img src="modules/Gallery_v2/images/video_block.png" alt="" />';
-else {
-	$ext = pathinfo($url, PATHINFO_EXTENSION);
-	if(file_exists($gallery_pref['rep_img'] .'temp/block_'. str_replace('.'. $ext, '', $url) .'.png')) $img = $gallery_pref['rep_img'] .'temp/block_'. str_replace('.'. $ext, '', $url) .'.png';
-	else $img = 'index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=b&amp;a_c=0&amp;image='. $url;
+	if(file_exists($gallery_pref['rep_img'] .'temp/block_'. str_replace('.'. $ext, '', $url_file) .'.png')) {
+		$img = $gallery_pref['rep_img'] .'temp/block_'. str_replace('.'. $ext, '', $url_file) .'.png';
+	} else {
+    	$img = 'index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=b&amp;a_c=0&amp;image='. $url_file;
+	}
+} elseif (($type == "flv" || $type == "youtube" || $type == "dailymotion" || $type == "vimeo") && $url_file == '') {
+	$img = '<img src="modules/Gallery_v2/images/video_block.png" alt="" />';
+} else {
+	$ext = pathinfo($url[0], PATHINFO_EXTENSION);
+	if(file_exists($gallery_pref['rep_img'] .'temp/block_'. str_replace('.'. $ext, '', $url[0]) .'.png')) {
+		$img = $gallery_pref['rep_img'] .'temp/block_'. str_replace('.'. $ext, '', $url[0]) .'.png';
+	} else {
+		$img = 'index.php?file=Gallery_v2&amp;nuked_nude=index&amp;op=make_thumb&amp;t=b&amp;a_c=0&amp;image='. $url[0];
+	}
 }
 
-echo '<img src="'. $img .'" alt="" /><br />'
-. '<a href="index.php?file=Gallery_v2&amp;op=description&amp;sid='. $vid .'">'. htmlentities($titre) .'</a><br />'. $aff_note;
+echo '<img src="'. $img .'" alt="" /><br />
+<a href="index.php?file=Gallery_v2&amp;op=description&amp;sid='. $vid .'">'. htmlentities($titre) .'</a><br />'. $aff_note;
 if($visiteur == 9) echo '<br />'. $id_galery .' suggestions en attente';
 echo '</div>';
 
