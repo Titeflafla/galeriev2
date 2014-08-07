@@ -856,9 +856,12 @@ if ($visiteur >= $level_access && $level_access > -1) {
 
 		$n_zip = time() .'_catégorie_'. $cid .'.zip';
     	$zip = new ZipArchive();
-    	if($zip->open($n_zip, ZipArchive::CREATE) === TRUE) {
+    	if ($zip->open($n_zip, ZipArchive::CREATE) === TRUE) {
     		while ($r_sql = mysql_fetch_array($sql_c, MYSQL_ASSOC)) {
-    			$zip->addFile($gallery_pref['rep_img'] . $r_sql['url'], $r_sql['url']);
+    			$r_sql['url'] = explode('|', $r_sql['url']);
+    			foreach($r_sql['url'] as $f) {
+    				if ($f != '') $zip->addFile($gallery_pref['rep_img'] . $f, $f);
+    			}
     		}
     		$zip->close();
     	}
