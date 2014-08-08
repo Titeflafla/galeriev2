@@ -71,6 +71,11 @@ define("_LVL_ZIP", "Lvl pour télécharger le zip");
 define("_THUMB_CADRE", "Génération des miniatures");
 define("_AFF_BLOCK", "Pour le block afficher");
 define("_NO_FOUND_DL", "Sorry no found !");
+define("_BADFILESUP","Les fichiers suivants ne sont pas des images");
+define("_BADFILEUP","Le fichier suivant n'est pas une image");
+define("_IMGUPEDS","Les images suivantes ont &eacute;t&eacute; upload&eacute;s avec succ&egrave;s");
+define("_IMGUPED","L'image suivante a &eacute;t&eacute; upload&eacute; avec succ&egrave;s");
+define("_NBMEDIAUPLOAD", "Nb de m&eacute;dia &agrave; uploader");
 
 define("_ADMINGALLERY","Administration Galerie V2");
 define("_HELP","Aides");
@@ -136,5 +141,8 @@ define("_IMAGE", "Image");
 define("_VIDEO", "Vidéo");
 define("_MOTCLE", "Mot clé");
 define("_ACTIF", "Etat");
+define("_UPLODMEDIA", "Uploader votre m&eacute;dia");
+define("_UPLOADTHUMB", "Uploader votre thumbail");
+define("_URLVIDEO", "Url de la vid&eacute;o");
 
 ?>
